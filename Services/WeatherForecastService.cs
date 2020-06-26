@@ -15,7 +15,7 @@ namespace MyWeatherApp.Services
             _httpClientFactory = httpClientFactory;
         }
 
-        public async Task<WeatherReport> GetWeatherReport(string icao)
+        public async Task<WeatherReport> GetWeatherReportAsync(string icao)
         {
             var client = _httpClientFactory.CreateClient("weatherReport");
             

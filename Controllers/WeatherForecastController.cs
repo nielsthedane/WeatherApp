@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using MyWeatherApp.Interfaces;
 using MyWeatherApp.Models;
+using MyWeatherApp.Models.Dtos;
 
 namespace MyWeatherApp.Controllers
 {
@@ -29,10 +30,10 @@ namespace MyWeatherApp.Controllers
 
 
         [HttpGet]
-        public WeatherReport GetWeatherReport(string icao)
+        public async Task<WeatherReportDto> GetWeatherReport(string icao)
         {
-            _weatherForecastService.GetWeatherReport(icao);
-            return null;
+            var weatherReport = await _weatherForecastService.GetWeatherReportAsync(icao);
+            return WeatherReport.ToWeatherReportDto(weatherReport);
         }
 /*
         [HttpGet]

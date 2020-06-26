@@ -5,6 +5,6 @@ namespace MyWeatherApp.Interfaces
 {
     public interface IWeatherForecastService
     {
-        Task<WeatherReport> GetWeatherReport(string icao);
+        Task<WeatherReport> GetWeatherReportAsync(string icao);
     }
 }

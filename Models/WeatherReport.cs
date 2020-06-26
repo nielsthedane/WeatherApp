@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Globalization;
+using MyWeatherApp.Models.Dtos;
 using Newtonsoft.Json;
 
 namespace MyWeatherApp.Models
@@ -6,6 +8,17 @@ namespace MyWeatherApp.Models
     public class WeatherReport
     {
         [JsonProperty("report")] public Report Report { get; set; }
+        
+        public static WeatherReportDto ToWeatherReportDto(WeatherReport weatherReport)
+        {
+            return new WeatherReportDto
+            {
+                Pressure = weatherReport.Report.Conditions.PressureHg.ToString(CultureInfo.InvariantCulture),
+                Temperature = weatherReport.Report.Conditions.TempC.ToString(CultureInfo.InvariantCulture),
+                VisibilityDistance = weatherReport.Report.Conditions.Visibility.DistanceSm.ToString(CultureInfo.InvariantCulture),
+                WindDirection = weatherReport.Report.Conditions.Wind.Direction.ToString(CultureInfo.InvariantCulture)
+            };
+        }
     }
 
     public class Report
@@ -206,4 +219,5 @@ namespace MyWeatherApp.Models
 
         [JsonProperty("icing")] public bool Icing { get; set; }
     }
+    
 }

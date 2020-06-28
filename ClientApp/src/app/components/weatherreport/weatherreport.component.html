@@ -1,0 +1,23 @@
+
+<button class="btn btn-primary" (click)="getWeatherReport()" >Get Weatherreport</button>
+
+<input type="text" [(ngModel)] = 'icao' />
+
+<table class='table table-striped' aria-labelledby="tableLabel">
+  <thead>
+    <tr>
+      <th>Pressure</th>
+      <th>Temperature</th>
+      <th>Visibility distance</th>
+      <th>Wind direction</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngIf="weatherReport !== undefined" >
+      <td>{{ weatherReport.pressure }} Hg</td>
+      <td>{{ weatherReport.temperature }}°C</td>
+      <td>{{ weatherReport.visibilityDistance }} SM</td>
+      <td>{{ weatherReport.windDirection }}°</td>
+    </tr>
+  </tbody>
+</table>

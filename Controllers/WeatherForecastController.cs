@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using MyWeatherApp.Interfaces;
@@ -32,6 +34,9 @@ namespace MyWeatherApp.Controllers
         [HttpGet]
         public async Task<WeatherReportDto> GetWeatherReport(string icao)
         {
+            if (string.IsNullOrEmpty(icao))
+                return null;
+            
             var weatherReport = await _weatherForecastService.GetWeatherReportAsync(icao);
             return WeatherReport.ToWeatherReportDto(weatherReport);
         }

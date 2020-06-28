@@ -1,11 +1,11 @@
+import { Weatherreport } from './models/weatherreport';
 import { HttpClient } from '@angular/common/http';
 import { Injectable, Inject } from '@angular/core';
-
 
 @Injectable({
   providedIn: 'root'
 })
-export class WeatherreportserviceService {
+export class WeatherreportService {
   private client: HttpClient;
   private baseUrl: string;
 
@@ -15,15 +15,8 @@ export class WeatherreportserviceService {
    }
 
    getWeatherReport(icao: string){
-    this.client.get<WeatherForecast[]>(baseUrl + 'weatherforecast').subscribe(result => {
-      this.forecasts = result;
-    }, error => console.error(error));
+    return this.client.get<Weatherreport>(this.baseUrl + 'weatherforecast?icao=' + icao);
    }
+
 }
 
-interface WeatherForecast {
-  date: string;
-  temperatureC: number;
-  temperatureF: number;
-  summary: string;
-}

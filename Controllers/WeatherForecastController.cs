@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using MyWeatherApp.Interfaces;
+using MyWeatherApp.Mappers;
 using MyWeatherApp.Models;
 using MyWeatherApp.Models.Dtos;
 
@@ -38,7 +39,7 @@ namespace MyWeatherApp.Controllers
                 return null;
             
             var weatherReport = await _weatherForecastService.GetWeatherReportAsync(icao);
-            return WeatherReport.ToWeatherReportDto(weatherReport);
+            return WeatherReportMapper.ToWeatherReportDto(weatherReport);
         }
 /*
         [HttpGet]

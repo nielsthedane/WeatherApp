@@ -65,6 +65,7 @@ namespace MyWeatherApp
                     pattern: "{controller}/{action=Index}/{id?}");
             });
 
+            /*
             app.UseSpa(spa =>
             {
                 // To learn more about options for serving an Angular SPA from ASP.NET Core,
@@ -76,6 +77,12 @@ namespace MyWeatherApp
                 {
                     spa.UseAngularCliServer(npmScript: "start");
                 }
+            });
+            */
+            
+            app.UseSpa(spa =>
+            {
+                spa.UseProxyToSpaDevelopmentServer("http://localhost:4200");
             });
         }
     }

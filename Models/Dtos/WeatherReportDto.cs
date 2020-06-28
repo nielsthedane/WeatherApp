@@ -1,16 +1,26 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Globalization;
 
 namespace MyWeatherApp.Models.Dtos
 {
     public class WeatherReportDto
     {
-        public string VisibilityDistance { get; set; }
-        public string Temperature { get; set; }
-        public string Pressure { get; set; }
+        public string Text { get; set; }
+        public string DateIssued { get; set; }
+        public double VisibilityDistance { get; set; }
+        public double Temperature { get; set; }
+        public double Pressure { get; set; }
         public string WindDirection { get; set; }
+        public string WindSpeed { get; set; }
+        public WeatherForeCastReport TafReport { get; set; }
+    }
 
-        
-   }
-    
-    
+    public class WeatherForeCastReport
+    {
+        public string Text { get; set; }
+        public string DateIssued { get; set; }
+        public double VisibilityDistance { get; set; }
+        public string WindDirection { get; set; }
+        public string WindSpeed { get; set; }
+    }
 }

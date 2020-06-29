@@ -1,8 +1,8 @@
 <div class="container-fluid">
-  <p>ICAO</p>
   <input style="margin-right: 10px;" type="text" [(ngModel)]='icao' placeholder="ICAO" />
   <button style="position: relative;" class="btn btn-info" (click)="getWeatherReport()">Get Report</button>
 </div>
+
 <table style="margin-top: 5px;" class='table table-striped' aria-labelledby="tableLabel">
   <thead>
     <tr>
@@ -21,72 +21,3 @@
     </tr>
   </tbody>
 </table>
-
-
-<ng-template #content let-modal>
-  <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Weather for {{ icao }}</h4>
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <ngb-tabset>
-      <ngb-tab title="METAR">
-        <ng-template ngbTabContent>
-          <p>METAR</p>
-          <table style="margin-top: 5px;" class='table table-striped' aria-labelledby="tableLabel">
-            <thead>
-              <tr>
-                <th>Pressure</th>
-                <th>Temperature</th>
-                <th>Visibility distance</th>
-                <th>Wind direction</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngIf="weatherReport !== undefined">
-                <td>{{ weatherReport.pressure }} Hg</td>
-                <td>{{ weatherReport.temperature }}°C</td>
-                <td>{{ weatherReport.visibilityDistance }} SM</td>
-                <td>{{ weatherReport.windDirection }}°</td>
-              </tr>
-            </tbody>
-          </table>
-        </ng-template>
-      </ngb-tab>
-      <ngb-tab title="TAF">
-        <ng-template ngbTabContent>
-          <p>TAF</p>
-          <table style="margin-top: 5px;" class='table table-striped' aria-labelledby="tableLabel">
-            <thead>
-              <tr>
-                <th>Pressure</th>
-                <th>Temperature</th>
-                <th>Visibility distance</th>
-                <th>Wind direction</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngIf="weatherReport !== undefined">
-                <td>{{ weatherReport.pressure }} Hg</td>
-                <td>{{ weatherReport.temperature }}°C</td>
-                <td>{{ weatherReport.visibilityDistance }} SM</td>
-                <td>{{ weatherReport.windDirection }}°</td>
-              </tr>
-            </tbody>
-          </table>
-        </ng-template>
-      </ngb-tab>
-    </ngb-tabset>
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Close</button>
-  </div>
-</ng-template>
-
-<button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button>
-
-<hr>
-
-<pre>{{ closeResult }}</pre>

@@ -11,6 +11,7 @@ import { CounterComponent } from './components/counter/counter.component';
 import { FetchDataComponent } from './components/fetch-data/fetch-data.component';
 import { WeatherreportComponent } from './components/weatherreport/weatherreport.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ReportModalComponent } from './components/modals/reportmodal/reportmodal.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
-    WeatherreportComponent
+    WeatherreportComponent,
+    ReportModalComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -34,6 +36,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ])
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ReportModalComponent]
 })
 export class AppModule { }

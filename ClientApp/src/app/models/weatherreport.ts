@@ -1,5 +1,6 @@
 export interface Weatherreport {
   text: string;
+  flightRules: string;
   dateIssued: Date;
   visibilityDistance: string;
   temperature: number;
@@ -11,9 +12,11 @@ export interface Weatherreport {
 
 export interface WeatherForecastReport {
   text: string;
+  flightRules: string;
   dateIssued: Date;
+  dateStart: Date;
+  dateEnd: Date;
   visibilityDistance: string;
-  pressure: number;
   windDirection: string;
   windSpeed: string;
 }

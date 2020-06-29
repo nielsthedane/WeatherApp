@@ -1,0 +1,137 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">Weather for {{ icao }}</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <ngb-tabset>
+    <ngb-tab title="METAR">
+      <ng-template ngbTabContent>
+        <div class="container no-gutters" *ngIf="weatherReport !== undefined">
+          <div class="row">
+            <div class="col">
+              Text
+            </div>
+            <div class="col-6">
+              {{ weatherReport.text }}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              Flight rules
+            </div>
+            <div class="col-6">
+              {{ weatherReport.flightRules }}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              Issued
+            </div>
+            <div class="col-6">
+              {{ weatherReport.dateIssued }}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              Temperature
+            </div>
+            <div class="col-6">
+              {{ weatherReport.temperature }}°C
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              Visibility
+            </div>
+            <div class="col-6">
+              {{ weatherReport.visibilityDistance }} SM
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              Pressure
+            </div>
+            <div class="col-6">
+              {{ weatherReport.pressure }} Hg
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              Wind
+            </div>
+            <div class="col-6">
+              {{ weatherReport.windDirection }}° at {{ weatherReport.windSpeed}} kts
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </ngb-tab>
+    <ngb-tab title="TAF">
+      <ng-template ngbTabContent>
+        <div class="container no-gutters" *ngIf="weatherReport !== undefined">
+          <div class="row">
+            <div class="col">
+              Text
+            </div>
+            <div class="col-6">
+              {{ weatherReport.tafReport.text }}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              Flight rules
+            </div>
+            <div class="col-6">
+              {{ weatherReport.tafReport.flightRules }}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              Issued
+            </div>
+            <div class="col-6">
+              {{ weatherReport.tafReport.dateIssued }}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              Period Start
+            </div>
+            <div class="col-6">
+              {{ weatherReport.tafReport.dateStart }}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              Period End
+            </div>
+            <div class="col-6">
+              {{ weatherReport.tafReport.dateEnd }}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              Visibility
+            </div>
+            <div class="col-6">
+              {{ weatherReport.tafReport.visibilityDistance }} SM
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              Wind
+            </div>
+            <div class="col-6">
+              {{ weatherReport.tafReport.windDirection }}° at {{ weatherReport.tafReport.windSpeed}} kts
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </ngb-tab>
+  </ngb-tabset>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-dark" (click)="activeModal.close()">Close</button>
+</div>

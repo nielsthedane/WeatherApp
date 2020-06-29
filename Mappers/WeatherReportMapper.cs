@@ -13,6 +13,7 @@ namespace MyWeatherApp.Mappers
             return new WeatherReportDto
             {
                 DateIssued = weatherReport.Report.Conditions.DateIssued,
+                FlightRules = weatherReport.Report.Conditions.FlightRules,
                 Pressure = weatherReport.Report.Conditions.PressureHg,
                 Temperature = weatherReport.Report.Conditions.TempC,
                 VisibilityDistance = weatherReport.Report.Conditions.Visibility.DistanceSm,
@@ -22,6 +23,9 @@ namespace MyWeatherApp.Mappers
                 TafReport = new WeatherForeCastReport
                 {
                     DateIssued = weatherReport.Report.Forecast.DateIssued,
+                    DateStart = weatherReport.Report.Forecast.Period.DateStart,
+                    DateEnd = weatherReport.Report.Forecast.Period.DateEnd,
+                    FlightRules = forecastConditions.FlightRules,
                     VisibilityDistance = forecastConditions.Visibility.DistanceSm,
                     WindDirection = forecastConditions.Wind.Direction.ToString(),
                     WindSpeed = forecastConditions.Wind.SpeedKts.ToString(),

@@ -20,8 +20,10 @@ namespace MyWeatherApp.Services
             var client = _httpClientFactory.CreateClient("weatherReport");
             
             var request = await client.GetAsync(icao);
+            if (request.IsSuccessStatusCode == false)
+                return null;
+            
             var content = await request.Content.ReadAsStringAsync();
-
             WeatherReport weatherReport = JsonConvert.DeserializeObject<WeatherReport>(content);
 
             return weatherReport;

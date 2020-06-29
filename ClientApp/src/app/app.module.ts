@@ -8,7 +8,6 @@ import { AppComponent } from './app.component';
 import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
 import { HomeComponent } from './components/home/home.component';
 import { CounterComponent } from './components/counter/counter.component';
-import { FetchDataComponent } from './components/fetch-data/fetch-data.component';
 import { WeatherreportComponent } from './components/weatherreport/weatherreport.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReportModalComponent } from './components/modals/reportmodal/reportmodal.component';
@@ -19,7 +18,6 @@ import { ReportModalComponent } from './components/modals/reportmodal/reportmoda
     NavMenuComponent,
     HomeComponent,
     CounterComponent,
-    FetchDataComponent,
     WeatherreportComponent,
     ReportModalComponent
   ],
@@ -31,7 +29,6 @@ import { ReportModalComponent } from './components/modals/reportmodal/reportmoda
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchDataComponent },
       { path: 'weatherreport', component: WeatherreportComponent }
     ])
   ],

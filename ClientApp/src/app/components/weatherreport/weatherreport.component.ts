@@ -1,5 +1,5 @@
 import { ReportModalComponent } from '../modals/reportmodal/reportmodal.component';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Weatherreport } from './../../models/weatherreport';
 import { WeatherreportService } from '../../weatherreport.service';
 import { Component, OnInit } from '@angular/core';
@@ -10,22 +10,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./weatherreport.component.css']
 })
 export class WeatherreportComponent implements OnInit {
-  public weatherReport: Weatherreport;
+  public weatherReports: Weatherreport[];
   public icao: string;
 
-  constructor(private weatherReportService: WeatherreportService, private modalService: NgbModal) { }
+  constructor(private weatherReportService: WeatherreportService, private modalService: NgbModal) {
+    this.weatherReports = [];
+  }
 
   ngOnInit() {
   }
 
   public getWeatherReport() {
     this.weatherReportService.getWeatherReport(this.icao)
-      .subscribe((data: Weatherreport) => this.weatherReport = { ...data }, (err) => console.error(err), () => this.open());
+      // tslint:disable-next-line:max-line-length
+      .subscribe((data: Weatherreport) => { this.weatherReports.push(data); }, (err) => console.error(err), () => this.open(this.weatherReports[this.weatherReports.length - 1]));
   }
 
-  open() {
+  open(weatherReport: Weatherreport) {
     const modalRef = this.modalService.open(ReportModalComponent);
-    modalRef.componentInstance.weatherReport = this.weatherReport;
+    modalRef.componentInstance.weatherReport = weatherReport;
     modalRef.componentInstance.icao = this.icao;
   }
 
